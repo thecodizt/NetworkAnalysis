@@ -10,12 +10,12 @@ from CriticalNode.Algorithms.closeness_centrality import closeness_centrality
 from CriticalNode.Algorithms.eigenvector_centrality import eigenvector_centrality
 from CriticalNode.Algorithms.local_clustering_coefficient import local_clustering_coefficient
 
-def aggregate_measures(adj_matrix, damping_factor=0.85, num_iterations=100, use_rank=False):
-    pagerank_scores = pagerank(adj_matrix, damping_factor, num_iterations)
-    betweenness_scores = betweenness_centrality(adj_matrix)
-    closeness_scores = closeness_centrality(adj_matrix)
-    eigenvector_scores = eigenvector_centrality(adj_matrix)
-    local_clustering_scores = local_clustering_coefficient(adj_matrix)
+def aggregate_measures(adjacency_matrix, damping_factor=0.85, num_iterations=100, use_rank=False):
+    pagerank_scores = pagerank(adjacency_matrix, damping_factor, num_iterations)
+    betweenness_scores = betweenness_centrality(adjacency_matrix)
+    closeness_scores = closeness_centrality(adjacency_matrix)
+    eigenvector_scores = eigenvector_centrality(adjacency_matrix)
+    local_clustering_scores = local_clustering_coefficient(adjacency_matrix)
 
     # Adjust weights as needed
     weights = {
@@ -27,7 +27,7 @@ def aggregate_measures(adj_matrix, damping_factor=0.85, num_iterations=100, use_
     }
 
     aggregated_scores = {}
-    for node in range(adj_matrix.shape[0]):
+    for node in range(adjacency_matrix.shape[0]):
         aggregated_scores[node] = (
             weights["pagerank"] * pagerank_scores[node]
             + weights["betweenness"] * betweenness_scores[node]
@@ -37,7 +37,7 @@ def aggregate_measures(adj_matrix, damping_factor=0.85, num_iterations=100, use_
         )
 
     if use_rank:
-        sorted_nodes = sorted(aggregated_scores, key=aggregated_scores.get)
+        sorted_nodes = sorted(aggregated_scores, key=aggregated_scores.get, reverse=True)
         final_ranks = {node: rank + 1 for rank, node in enumerate(sorted_nodes)}
         return aggregated_scores, final_ranks
     else:
