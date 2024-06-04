@@ -3,8 +3,7 @@ import numpy as np
 
 from utils import parse_csv_string, visualize_critical_node_graph, generate_random_adj_matrix
 
-from CriticalNode.Algorithms import aggregate_measures, betweenness_centrality, closeness_centrality, eigenvector_centrality, local_clustering_coefficient, pagerank
-
+from CriticalNode.Algorithms import aggregate_measures, betweenness_centrality, closeness_centrality, eigenvector_centrality, local_clustering_coefficient, pagerank, coreness_centrality, degree_centrality, percolation_centrality, katz_centrality, clusterrank_centrality, mnc_centrality, semilocal_centrality, load_centrality, laplacian_centrality
 def ui_input():
     st.subheader("Input")
     
@@ -42,7 +41,16 @@ if __name__ == "__main__":
                 "Closeness Centrality",
                 "Eigenvector Centrality",
                 "Local Cluserting Coefficient",
-                "Pagerank"
+                "Pagerank",
+                "Coreness Centrality",
+                "Degree Centrality",
+                "Percolation Centrality",
+                "Katz Centrality",
+                "Cluster Rank Centrality",
+                "Maximum Neighborhood Component",
+                "Semi Local Centrality",
+                "Load Centrality",
+                "Laplacian Centrality",
             ]
         
         critical_node_algorithm_option = st.selectbox(
@@ -85,5 +93,49 @@ if __name__ == "__main__":
             st.code(result)
             visualize_critical_node_graph(adjacency_matrix=adj_matrix, score=result)
             
+        elif critical_node_algorithm_option == critical_node_algorithms[6]:
+            result = coreness_centrality(adj_matrix=adj_matrix)
+            st.code(result)
+            visualize_critical_node_graph(adjacency_matrix=adj_matrix, score=result)
+
+        elif critical_node_algorithm_option == critical_node_algorithms[7]:
+            result = degree_centrality(adj_matrix=adj_matrix)
+            st.code(result)
+            visualize_critical_node_graph(adjacency_matrix=adj_matrix, score=result)
+        
+        elif critical_node_algorithm_option == critical_node_algorithms[8]:
+            result = percolation_centrality(adj_matrix=adj_matrix)
+            st.code(result)
+            visualize_critical_node_graph(adjacency_matrix=adj_matrix, score=result)
+        
+        elif critical_node_algorithm_option == critical_node_algorithms[9]:
+            result = katz_centrality(adj_matrix=adj_matrix)
+            st.code(result)
+            visualize_critical_node_graph(adjacency_matrix=adj_matrix, score=result)
+
+        elif critical_node_algorithm_option == critical_node_algorithms[10]:
+            result = clusterrank_centrality(adj_matrix=adj_matrix)
+            st.code(result)
+            visualize_critical_node_graph(adjacency_matrix=adj_matrix, score=result)
+
+        elif critical_node_algorithm_option == critical_node_algorithms[11]:
+            result = mnc_centrality(adj_matrix=adj_matrix)
+            st.code(result)
+            visualize_critical_node_graph(adjacency_matrix=adj_matrix, score=result)
+
+        elif critical_node_algorithm_option == critical_node_algorithms[12]:
+            result = semilocal_centrality(adj_matrix=adj_matrix)
+            st.code(result)
+            visualize_critical_node_graph(adjacency_matrix=adj_matrix, score=result)
+
+        elif critical_node_algorithm_option == critical_node_algorithms[13]:
+            result = load_centrality(adj_matrix=adj_matrix)
+            st.code(result)
+            visualize_critical_node_graph(adjacency_matrix=adj_matrix, score=result)
+
+        elif critical_node_algorithm_option == critical_node_algorithms[14]:
+            result = laplacian_centrality(adj_matrix=adj_matrix)
+            st.code(result)
+            visualize_critical_node_graph(adjacency_matrix=adj_matrix, score=result)
             
         

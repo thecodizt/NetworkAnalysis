@@ -4,3 +4,12 @@ from CriticalNode.Algorithms.eigenvector_centrality import eigenvector_centralit
 from CriticalNode.Algorithms.local_clustering_coefficient import local_clustering_coefficient
 from CriticalNode.Algorithms.pagerank import pagerank
 from CriticalNode.Algorithms.aggregate_measures import aggregate_measures
+from CriticalNode.Algorithms.coreness_centrality import coreness_centrality
+from CriticalNode.Algorithms.degree_centrality import degree_centrality
+from CriticalNode.Algorithms.percolation_centrality import percolation_centrality
+from CriticalNode.Algorithms.katz_centrality import katz_centrality
+from CriticalNode.Algorithms.clusterrank_centrality import clusterrank_centrality
+from CriticalNode.Algorithms.mnc_centrality import mnc_centrality
+from CriticalNode.Algorithms.semilocal_centrality import semilocal_centrality
+from CriticalNode.Algorithms.load_centrality import load_centrality
+from CriticalNode.Algorithms.laplacian_centrality import laplacian_centrality
